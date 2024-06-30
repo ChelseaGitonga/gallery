@@ -9,9 +9,14 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/ChelseaGitonga/gallery'
-                sh 'npm install'
             }
             
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
         }
 
         stage('Build') {
@@ -19,9 +24,9 @@ pipeline {
                 sh 'npm run'
             }
         }
-        
+
         stage('Test') {
-            steps{
+            steps {
                 sh 'npm test'
             }
 
