@@ -31,4 +31,18 @@ pipeline {
             }
         }
     }
+    post {
+        failure {
+            echo 'Sending email notification from Jenkins'
+            
+             step([$class: 'Mailer',
+      notifyEveryUnstableBuild: true,
+      recipients: emailextrecipients([[$class: 'CulpritsRecipientProvider'],
+                                      [$class: 'RequesterRecipientProvider']])])
+
+
+        }
+    }
+        
+    
 } 
