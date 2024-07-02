@@ -25,9 +25,18 @@ pipeline {
             }
         }
 
-        stage('Test'){
+        stage('Test') {
             steps{
                 sh 'npm test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    def url = 'https://gallery-s0sr.onrender.com/'
+                    openLink(url)
+                }
             }
         }
     }
