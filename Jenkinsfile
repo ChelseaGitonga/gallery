@@ -41,10 +41,12 @@ pipeline {
     }
     post {
         success {
-            echo 'Pipeline run successfully'
-             step(
-                slackSend color: 'good', message: 'Deployment successful. Build ID: dccfc49, Link to Render - https://gallery-s0sr.onrender.com'
-             )      
+            echo 'Slack Notification'
+
+            slackSend channel: 'chelsea_ip1', 
+                      color: 'good', 
+                      message: "Job: ${env.JOB_NAME} Build: ${env.BUILD_NUMBER} Link to render - https://gallery-s0sr.onrender.com" 
+  
         }
 
         failure {
