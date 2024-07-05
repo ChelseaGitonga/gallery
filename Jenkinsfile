@@ -40,6 +40,13 @@ pipeline {
 
     }
     post {
+        success {
+            echo 'Pipeline run successfully'
+             steps {
+                slackSend color: 'good', message: 'Deployment successful. Build ID: dccfc49, Link to Render - https://gallery-s0sr.onrender.com'
+            }
+        }
+
         failure {
             echo 'Sending an email notification from Jenkins'
             
