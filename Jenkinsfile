@@ -31,6 +31,12 @@ pipeline {
             }
         }
 
+        stage('Deploy to render') {
+            steps{
+                sh 'curl -X POST -d "" https://api.render.com/deploy/srv-cq1964qju9rs73bi5ir0?key=EN0AK56jcC0'
+            }
+        }
+
 
     }
     post {
